@@ -21,6 +21,7 @@
     </style>
 </head>
 <body class="antialiased">
-修改槍枝類型的 view
+修改槍枝類型的 view <br/>
+Type name : {{$type_name}}
 </body>
 </html>

@@ -21,6 +21,9 @@
     </style>
 </head>
 <body class="antialiased">
-顯示 單筆 槍枝的 view
+顯示 單筆 槍枝的 view <br/>
+Gun name : {{$gun_name}} <br/>
+Gun type : {{$gun_type}}
 </body>
 </html>
+
