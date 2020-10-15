@@ -21,7 +21,6 @@
     </style>
 </head>
 <body class="antialiased">
-顯示 單筆 槍枝類型的 view <br/>
-Type name : {{$type_name}}
+顯示 所有 company的 view
 </body>
 </html>
