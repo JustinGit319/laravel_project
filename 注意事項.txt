@@ -1,0 +1,17 @@
+拉下此專案後，需自行產生 vendor資料夾 and .env檔
+
+
+/* 
+  Step1 : Update and download laravel 核心檔 
+
+  Step2 : 在.env檔中產生key 
+   
+  Step3 : 啟動 serve 
+*/
+
+ composer update 
+
+ php artisan key:generate 
+
+ php artisan serve
+ 
