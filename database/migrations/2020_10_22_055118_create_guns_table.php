@@ -16,9 +16,9 @@ class CreateGunsTable extends Migration
         Schema::create('guns', function (Blueprint $table) {
             $table->id('gun_id')->comment('槍械編號');
             $table->string('gun_name')->comment('槍名')->unique();
-            $table->foreignId('company')->comment('廠牌名稱');
             $table->string('gun_type')->comment('槍種');
             $table->string('caliber')->comment('口徑');
+            $table->foreignId('company')->comment('廠牌名稱');
             $table->timestamps();
             $table->foreign('company')->references('company_name')->on('companys');
         });
