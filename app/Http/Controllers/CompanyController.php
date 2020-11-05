@@ -2,35 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\company;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    public function index(){
-        return view('companys.index');
+    public function index()
+    {
+        $companys = company::all();;
+        return view('companys.index', ['companys' => $companys]);
     }
 
-    public function creat(){
+    public function creat()
+    {
         return view('companys.creat');
     }
 
-    public function show($id){
-        if ($id == 5){
-            $company_name = "XXX";
-        } else {
-            $company_name = "Whatever";
-        }
-        $data = compact("company_name");
-        return view('companys.show', $data);
+    public function show($id)
+    {
+        $temp = company::findOrFail($id);
+        $company = $temp->toArray();
+        return view('companys.show', $company);
     }
 
-    public function edit($id){
-        if ($id == 5){
-            $company_name = "XXX";
-        } else {
-            $company_name = "Whatever";
-        }
-        $data = compact("company_name");
-        return view('companys.edit', $data);
+    public function edit($id)
+    {
+        $company = company::findOrFail($id)->toArray();
+        return view('$companys.edit', $company);
     }
 }

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\gun;
 use Illuminate\Http\Request;
 
 class GunsController extends Controller
 {
     public function index(){
-        return view('guns.index');
+        $guns = gun::all();
+        return view('guns.index',['receipts'=>$guns]);
     }
 
     public function creat(){
@@ -15,26 +17,14 @@ class GunsController extends Controller
     }
 
     public function show($id){
-        if ($id == 5){
-            $gun_name = "AK-47";
-            $gun_type = "Assault rifle";
-        } else {
-            $gun_name = "Whatever";
-            $gun_type = "Whatever";
-        }
-        $data = compact("gun_name", "gun_type");
-        return view('guns.show', $data);
+        $temp = gun::findOrFail($id);
+        $gun = $temp->toArray();
+        return view('guns.show',$gun);
     }
 
-    public function edit($id){
-        if ($id == 5){
-            $gun_name = "AK-47";
-            $gun_type = "Assault rifle";
-        } else {
-            $gun_name = "Whatever";
-            $gun_type = "Whatever";
-        }
-        $data = compact("gun_name", "gun_type");
-        return view('guns.edit', $data);
+    public function edit($id)
+    {
+        $gun = gun::findOrFail($id)->toArray();
+        return view('guns.edit', $gun);
     }
 }

@@ -21,7 +21,20 @@
     </style>
 </head>
 <body class="antialiased">
-顯示 單筆 company的 view <br/>
-company name : {{$company_name}}
+<h1>這是 單筆公司 資料表單的 view</h1>
+<table class="text-center">
+    <tr>
+        <td>Company id</td>
+        <td>Company name</td>
+        <td>Country </td>
+    </tr>
+    <tr>
+        <td>{{$company_id}}</td>
+        <td>{{$company_name}}</td>
+        <td>{{$country}}</td>
+    </tr>
+</table>
+<br>
+<a href="<?php echo route('companys.index');?>">回到公司的 view</a>
 </body>
 </html>

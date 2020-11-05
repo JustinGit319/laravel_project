@@ -21,8 +21,23 @@
     </style>
 </head>
 <body class="antialiased">
-修改槍枝的 view <br/>
-Gun name : {{$gun_name}} <br/>
-Gun type : {{$gun_type}}
+<h1>這是 修改一筆槍枝 資料表單的 view</h1>
+<table class="text-center">
+    <tr>
+        <td>Gun ID</td>
+        <td>Gun name</td>
+        <td>Gun type</td>
+        <td>Caliber</td>
+        <td>company</td>
+    </tr>
+    <tr>
+        <td>{{$gun_id}}</td>
+        <td>{{$gun_name}}</td>
+        <td>{{$gun_type}}</td>
+        <td>{{$caliber}}</td>
+        <td>{{$company}}</td>
+    </tr>
+</table>
+<br><a href="<?php echo route('guns.index');?>">回到槍枝的 view</a>
 </body>
 </html>
