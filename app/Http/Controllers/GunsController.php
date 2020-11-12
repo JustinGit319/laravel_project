@@ -15,7 +15,7 @@ class GunsController extends Controller
     }
 
     public function creat(){
-        return view('guns.creat');
+        return view('guns.create');
     }
 
     public function show($id){

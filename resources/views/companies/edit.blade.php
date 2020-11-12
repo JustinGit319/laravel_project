@@ -21,7 +21,7 @@
     </style>
 </head>
 <body class="antialiased">
-<h1>這是 修改單筆公司 資料表單的 view</h1>
+<h1>這是修改單筆廠商view</h1>
 <table class="text-center">
     <tr>
         <td>Company id</td>

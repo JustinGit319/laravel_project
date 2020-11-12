@@ -21,7 +21,7 @@
     </style>
 </head>
 <body class="antialiased">
-<h1>顯示 單筆 槍枝的 view</h1>
+<h1>這是單筆槍枝的view</h1>
 <table class="text-center">
     <tr>
         <td>Gun ID</td>

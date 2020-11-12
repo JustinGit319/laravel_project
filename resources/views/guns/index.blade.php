@@ -21,7 +21,7 @@
     </style>
 </head>
 <body class="antialiased">
-<h1>這是所有槍枝資料表單</h1>
+<h1>這是所有槍枝view</h1>
 <br><a style="color: steelblue" href="<?php echo route('companies.index');?>">轉移至所有廠商資料的view</a>
 <table class="text-center">
     <tr>

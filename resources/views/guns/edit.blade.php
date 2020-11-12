@@ -21,7 +21,7 @@
     </style>
 </head>
 <body class="antialiased">
-<h1>這是 修改一筆槍枝 資料表單的 view</h1>
+<h1>這是修改一筆槍枝的view</h1>
 <table class="text-center">
     <tr>
         <td>Gun ID</td>
