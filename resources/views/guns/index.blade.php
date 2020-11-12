@@ -21,6 +21,30 @@
     </style>
 </head>
 <body class="antialiased">
-顯示 所有 槍枝的 view
+<h1>這是所有槍枝資料表單</h1>
+<br><a style="color: steelblue" href="<?php echo route('companies.index');?>">轉移至所有廠商資料的view</a>
+<table class="text-center">
+    <tr>
+        <td style="color: crimson">槍械編號</td>
+        <td style="color: deepskyblue">槍名</td>
+        <td style="color: blueviolet">槍種</td>
+        <td style="color: steelblue">口徑</td>
+        <td style="color: steelblue">廠牌名稱</td>
+    </tr>
+    @foreach($guns as $gun)
+        <tr>
+            <td>{{$gun->id}}</td>
+            <td>{{$gun->gun_name}}</td>
+            <td>{{$gun->gun_type}}</td>
+            <td>{{$gun->caliber}}</td>
+            <td>{{$gun->company}}</td>
+            @foreach($companies as $company)
+                @if($company->id == $gun->company)
+                    <td>{{$company->company_name}}</td>
+                @endif
+            @endforeach
+        </tr>
+    @endforeach
+</table>
 </body>
 </html>

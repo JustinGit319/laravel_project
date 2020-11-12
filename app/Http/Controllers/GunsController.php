@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\company;
 use App\Models\gun;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,8 @@ class GunsController extends Controller
 {
     public function index(){
         $guns = gun::all();
-        return view('guns.index',['receipts'=>$guns]);
+        $companies = company::all();
+        return view('guns.index',['guns'=>$guns, 'companies'=>$companies]);
     }
 
     public function creat(){
@@ -17,14 +19,15 @@ class GunsController extends Controller
     }
 
     public function show($id){
-        $temp = gun::findOrFail($id);
-        $gun = $temp->toArray();
-        return view('guns.show',$gun);
+        $gun = gun::findOrFail($id)->toArray();
+        $companies = company::all();
+        return view('guns.show',$gun, ['companies'=>$companies]);
     }
 
     public function edit($id)
     {
         $gun = gun::findOrFail($id)->toArray();
-        return view('guns.edit', $gun);
+        $companies = company::all();
+        return view('guns.edit', $gun, ['companies'=>$companies]);
     }
 }

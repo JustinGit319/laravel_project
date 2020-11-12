@@ -10,25 +10,24 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        $companys = company::all();;
-        return view('companys.index', ['companys' => $companys]);
+        $companies = company::all();;
+        return view('companies.index', ['companies' => $companies]);
     }
 
     public function creat()
     {
-        return view('companys.creat');
+        return view('companies.create');
     }
 
     public function show($id)
     {
-        $temp = company::findOrFail($id);
-        $company = $temp->toArray();
-        return view('companys.show', $company);
+        $company = company::findOrFail($id)->toArray();
+        return view('companies.show', $company);
     }
 
     public function edit($id)
     {
         $company = company::findOrFail($id)->toArray();
-        return view('$companys.edit', $company);
+        return view('companies.edit', $company);
     }
 }

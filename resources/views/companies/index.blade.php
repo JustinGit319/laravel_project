@@ -21,20 +21,20 @@
     </style>
 </head>
 <body class="antialiased">
-<h1>這是 修改單筆公司 資料表單的 view</h1>
-<table class="text-center">
+<h1>這是所有廠商資料表單</h1>
+<br><a style="color: steelblue" href="<?php echo route('guns.index');?>">轉移至所有槍枝資料的view</a>
+<table>
     <tr>
-        <td>Company id</td>
-        <td>Company name</td>
-        <td>Country </td>
+        <td style="color: crimson">公司編號</td>
+        <td style="color: deepskyblue">公司名稱</td>
+        <td style="color: blueviolet">所在地區</td>
     </tr>
-    <tr>
-        <td>{{$company_id}}</td>
-        <td>{{$company_name}}</td>
-        <td>{{$country}}</td>
-    </tr>
+    @foreach($companies as $company )
+        <tr>
+            <td>{{$company->id}}</td>
+            <td>{{$company->company_name}}</td>
+            <td>{{$company->country}}</td>
+    @endforeach
 </table>
-<br>
-<a href="<?php echo route('companys.index');?>">回到公司的 view</a>
 </body>
 </html>

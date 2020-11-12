@@ -31,13 +31,18 @@
         <td>company</td>
     </tr>
     <tr>
-        <td>{{$gun_id}}</td>
+        <td>{{$id}}</td>
         <td>{{$gun_name}}</td>
         <td>{{$gun_type}}</td>
         <td>{{$caliber}}</td>
         <td>{{$company}}</td>
+        @foreach($companies as $one_company_data)
+            @if($one_company_data->id == $company)
+                <td>{{$one_company_data->company_name}}</td>
+            @endif
+        @endforeach
     </tr>
 </table>
-<br><a href="<?php echo route('guns.index');?>">回到槍枝的 view</a>
+<a style="color: crimson" href="<?php echo route('guns.index');?>">回到所有槍枝的view</a>
 </body>
 </html>

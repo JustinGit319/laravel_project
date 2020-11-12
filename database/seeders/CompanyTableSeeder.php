@@ -15,13 +15,13 @@ class CompanyTableSeeder extends Seeder
      */
     public function GenerateCompanyName(){
         $all_company = [
-            'COLT-柯爾特',
-            'Kalashnikov-卡拉什尼科夫',
-            'H&K-黑克勒-科赫',
-            'Glock-克拉克',
-            'SIG Sauer-西格&紹爾'
+            'COLT',
+            'Kalashnikov',
+            'H&K',
+            'Glock',
+            'SIG Sauer'
         ];
-        return $all_company[rand(0, count($all_company)-1)];
+        return $all_company;
     }
     public function GenerateCountry(){
         $all_country = [
@@ -31,16 +31,16 @@ class CompanyTableSeeder extends Seeder
             '中國',
             '印度'
         ];
-        return $all_country[rand(0, count($all_country)-1)];
+        return $all_country;
     }
     public function run()
     {
         for($i=0; $i<5; ++$i){
             $company = $this->GenerateCompanyName();
             $country = $this->GenerateCountry();
-            DB::table('companys')->insert([
-                "company_name" => $company,
-                "country" => $country,
+            DB::table('companies')->insert([
+                "company_name" => $company[$i],
+                "country" => $country[$i],
                 "created_at" => Carbon::now()->subMinute(rand(1,58)),
                 "updated_at" => Carbon::now()->subMinute(rand(1,58))
             ]);

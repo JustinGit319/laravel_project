@@ -53,7 +53,7 @@ class GunTableSeeder extends Seeder
     }
 
     public function GenerateCompany(){
-        return rand(0, 5);
+        return rand(1, 5);
     }
 
 

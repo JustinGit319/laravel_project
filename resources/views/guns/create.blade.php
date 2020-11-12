@@ -21,6 +21,7 @@
     </style>
 </head>
 <body class="antialiased">
-建立槍枝的 view
+建立槍枝的 view</br>
+<a style="color: crimson" href="<?php echo route('guns.index');?>">回到所有槍枝的view</a>
 </body>
 </html>
