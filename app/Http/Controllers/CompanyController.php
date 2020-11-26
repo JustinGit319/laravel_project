@@ -30,4 +30,9 @@ class CompanyController extends Controller
         $company = company::findOrFail($id)->toArray();
         return view('companies.edit', $company);
     }
+
+    public function store()
+    {
+
+    }
 }

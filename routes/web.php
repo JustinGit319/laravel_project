@@ -31,6 +31,7 @@ Route::get('guns/{id}', [GunsController::class, 'show'])->where('id', '[0-9]+')-
 
 Route::get('guns/{id}/edit', [GunsController::class, 'edit'])->where('id', '[0-9]+')->name('guns.edit');
 
+Route::get('guns/store', [GunsController::class, 'store'])->name('guns.store');
 
 /* ----------------- Company --------------- */
 
@@ -41,6 +42,8 @@ Route::get('companies/create', [CompanyController::class, 'creat'])->name('compa
 Route::get('companies/{id}', [CompanyController::class, 'show'])->where('id', '[0-9]+')->name('companies.show');
 
 Route::get('companies/{id}/edit', [CompanyController::class, 'edit'])->where('id', '[0-9]+')->name('companies.edit');
+
+Route::get('companies', [GunsController::class, 'store'])->name('guns.store');
 
 
 

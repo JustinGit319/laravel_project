@@ -30,4 +30,9 @@ class GunsController extends Controller
         $companies = company::all();
         return view('guns.edit', $gun, ['companies'=>$companies]);
     }
+
+    public function store()
+    {
+
+    }
 }
