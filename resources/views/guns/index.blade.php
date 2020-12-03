@@ -12,8 +12,9 @@
         <td style="color: blueviolet">槍種</td>
         <td style="color: steelblue">口徑</td>
         <td style="color: steelblue">廠牌名稱</td>
-        <td style="color: crimson">操作</td>
+        <td style="color: crimson">詳細</td>
         <td style="color: deepskyblue">編輯</td>
+        <td style="color: deepskyblue">操作</td>
     </tr>
     @foreach($guns as $gun)
         <tr>
@@ -29,6 +30,7 @@
 {{--            @endforeach--}}
             <td><a href="{{route('guns.show', [$id = $gun->id])}}">檢視</a></td>
             <td><a href="{{route('guns.edit', [$id = $gun->id])}}">編輯</a></td>
+            <td><a href="{{route('guns.destroy', [$id = $gun->id])}}">刪除</a></td>
         </tr>
     @endforeach
 </table>

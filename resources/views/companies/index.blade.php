@@ -10,8 +10,9 @@
             <td style="color: crimson">公司編號</td>
             <td style="color: deepskyblue">公司名稱</td>
             <td style="color: blueviolet">所在地區</td>
-            <td style="color: crimson">操作</td>
+            <td style="color: crimson">詳細</td>
             <td style="color: deepskyblue">編輯</td>
+            <td style="color: deepskyblue">操作</td>
         </tr>
         @foreach($companies as $company )
             <tr>
@@ -20,6 +21,7 @@
                 <td>{{$company->country}}</td>
                 <td><a href="{{route('companies.show', [$id = $company->id])}}">檢視</a></td>
                 <td><a href="{{route('companies.edit', [$id = $company->id])}}">修改</a></td>
+                <td><a href="{{route('companies.destroy', [$id = $company->id])}}">刪除</a></td>
         @endforeach
     </table>
 @endsection

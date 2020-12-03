@@ -51,4 +51,11 @@ class CompanyController extends Controller
 
         return redirect('companies');
     }
+
+    public function destroy($id)
+    {
+        Company::destroy($id);
+
+        return redirect('companies');
+    }
 }

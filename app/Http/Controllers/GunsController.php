@@ -54,4 +54,11 @@ class GunsController extends Controller
             );
         return redirect('guns');
     }
+
+    public function destroy($id)
+    {
+        Gun::destroy($id);
+
+        return redirect('guns');
+    }
 }
