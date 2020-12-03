@@ -20,9 +20,6 @@ Route::get('/', function () {
 
 /* ----------------- Gun --------------- */
 
-//Route::get('guns', function(){
-//    return view('guns.index');
-//});
 Route::get('guns', [GunsController::class, 'index'])->name('guns.index');
 
 Route::get('guns/create', [GunsController::class, 'creat'])->name('guns.create');
@@ -30,8 +27,9 @@ Route::get('guns/create', [GunsController::class, 'creat'])->name('guns.create')
 Route::get('guns/{id}', [GunsController::class, 'show'])->where('id', '[0-9]+')->name('guns.show');
 
 Route::get('guns/{id}/edit', [GunsController::class, 'edit'])->where('id', '[0-9]+')->name('guns.edit');
+Route::patch('guns/{id}/update', [GunsController::class, 'update'])->where('id', '[0-9]+')->name('guns.update');
 
-Route::get('guns/store', [GunsController::class, 'store'])->name('guns.store');
+Route::post('guns/store', [GunsController::class, 'store'])->name('guns.store');
 
 /* ----------------- Company --------------- */
 
@@ -42,8 +40,9 @@ Route::get('companies/create', [CompanyController::class, 'creat'])->name('compa
 Route::get('companies/{id}', [CompanyController::class, 'show'])->where('id', '[0-9]+')->name('companies.show');
 
 Route::get('companies/{id}/edit', [CompanyController::class, 'edit'])->where('id', '[0-9]+')->name('companies.edit');
+Route::patch('companies/{id}/update', [CompanyController::class, 'update'])->where('id', '[0-9]+')->name('companies.update');
 
-Route::get('companies', [GunsController::class, 'store'])->name('guns.store');
+Route::post('companies/store', [CompanyController::class, 'store'])->name('companies.store');
 
 
 

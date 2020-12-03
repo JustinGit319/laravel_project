@@ -18,9 +18,12 @@
         {!! Form::Label('caliber' , '口徑:') !!}
         {!! Form::text('caliber', null, [ 'class' => 'form-control']) !!}
     </div>
+
+    {{--    下次記得修改為下拉式表單--}}
     <div class = "form-group">
         {!! Form::Label('company' , '廠商名稱:') !!}
         {!! Form::text('company', null, [ 'class' => 'form-control']) !!}
     </div>
+    {{Form::submit('新增此槍枝')}}
 {!! Form::close() !!}
 @endsection

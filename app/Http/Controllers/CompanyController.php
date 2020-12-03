@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\company;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -31,8 +31,24 @@ class CompanyController extends Controller
         return view('companies.edit', $company);
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $company = new Company();
+        $company->company_name = $request->input('company_name');
+        $company->country = $request->input('country');
+        $company->save();
 
+        return redirect('companies');
+    }
+
+    public function update($id, Request $request)
+    {
+        Company::FindOrFail($id)
+            ->update([
+                'company_name' => $request->input('company_name'),
+                'country'=>$request->input('country')
+            ]);
+
+        return redirect('companies');
     }
 }

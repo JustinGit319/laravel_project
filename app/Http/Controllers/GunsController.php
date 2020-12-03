@@ -31,8 +31,27 @@ class GunsController extends Controller
         return view('guns.edit', $gun, ['companies'=>$companies]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $gun = new Gun();
+        $gun->gun_name = $request->input('gun_name');
+        $gun->gun_type = $request->input('gun_type');
+        $gun->caliber = $request->input('caliber');
+        $gun->company = $request->input('company');
+        $gun->save();
 
+        return redirect('guns');
+    }
+
+    public function update($id, Request $request)
+    {
+        Gun::FindOrFail($id)
+            ->update(
+                ['gun_name' => $request->input('gun_name')],
+                ['gun_type' => $request->input('gun_type')],
+                ['caliber' => $request->input('caliber')],
+                ['company' => $request->input('company')],
+            );
+        return redirect('guns');
     }
 }
