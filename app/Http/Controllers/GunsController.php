@@ -5,13 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\company;
 use App\Models\gun;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GunsController extends Controller
 {
     public function index(){
-        $guns = gun::all();
-        $companies = company::all();
-        return view('guns.index',['guns'=>$guns, 'companies'=>$companies]);
+        $guns = DB::table('guns')
+            ->join('companies', 'guns.company', '=', 'companies.id')
+            ->orderBy('guns.id')
+            ->select(
+                'guns.id',
+                'guns.gun_name',
+                'guns.gun_type',
+                'guns.caliber',
+                'companies.company_name',
+            )->get();
+        return view('guns.index',['guns'=>$guns]);
     }
 
     public function creat(){

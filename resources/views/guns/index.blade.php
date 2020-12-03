@@ -22,7 +22,7 @@
             <td>{{$gun->gun_name}}</td>
             <td>{{$gun->gun_type}}</td>
             <td>{{$gun->caliber}}</td>
-            <td>{{$gun->company}}</td>
+            <td>{{$gun->company_name}}</td>
 {{--            @foreach($companies as $company)--}}
 {{--                @if($company->id == $gun->company)--}}
 {{--                    <td>{{$company->company_name}}</td>--}}
