@@ -10,21 +10,26 @@ use Illuminate\Support\Facades\DB;
 class GunsController extends Controller
 {
     public function index(){
-        $guns = DB::table('guns')
-            ->join('companies', 'guns.company', '=', 'companies.id')
-            ->orderBy('guns.id')
-            ->select(
-                'guns.id',
-                'guns.gun_name',
-                'guns.gun_type',
-                'guns.caliber',
-                'companies.company_name',
-            )->get();
-        return view('guns.index',['guns'=>$guns]);
+        $guns = Gun::GetAllData()->get();
+        $models = Gun::GetAllGunType()->get();
+
+        $data = [];
+        foreach($models as $model){
+            $data[$model->gun_type] = $model->gun_type;
+        }
+        return view('guns.index',['guns'=>$guns, 'guntypes' => $data]);
     }
 
     public function creat(){
-        return view('guns.create');
+        $companies = DB::table('companies')
+            ->select('id', 'company_name')
+            ->orderBy('id', 'asc')->get();
+
+        $all_company_name = [];
+        foreach ($companies as $company){
+            $all_company_name[$company->id] = $company->company_name;
+        }
+        return view('guns.create', ['companies'=>$all_company_name]);
     }
 
     public function show($id){
@@ -35,9 +40,16 @@ class GunsController extends Controller
 
     public function edit($id)
     {
+        $companies = DB::table('companies')
+            ->select('id', 'company_name')
+            ->orderby('id', 'asc')
+            ->get();
+        $all_company_name = [];
+        foreach($companies as $company){
+            $all_company_name[$company->id] = $company->company_name;
+        }
         $gun = gun::findOrFail($id)->toArray();
-        $companies = company::all();
-        return view('guns.edit', $gun, ['companies'=>$companies]);
+        return view('guns.edit', $gun, ['companies'=>$all_company_name]);
     }
 
     public function store(Request $request)
@@ -67,7 +79,12 @@ class GunsController extends Controller
     public function destroy($id)
     {
         Gun::destroy($id);
-
         return redirect('guns');
+    }
+
+    public function guntype(){
+        $guns = Gun::filter_guntype()->get();
+
+        return view('guns.index',['guns'=>$guns]);
     }
 }

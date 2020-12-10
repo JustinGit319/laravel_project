@@ -21,6 +21,7 @@ Route::get('/', function () {
 /* ----------------- Gun --------------- */
 
 Route::get('guns', [GunsController::class, 'index'])->name('guns.index');
+Route::get('guns/guntype', [GunsController::class, 'guntype'])->name('guns.guntype');
 Route::get('guns/{id}/destroy', [GunsController::class, 'destroy'])->name('guns.destroy');
 
 Route::get('guns/create', [GunsController::class, 'creat'])->name('guns.create');

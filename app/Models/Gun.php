@@ -16,4 +16,33 @@ class Gun extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function scopeGetAllData($query){
+        $query->join('companies', 'guns.company', '=', 'companies.id')
+            ->orderBy('guns.id')
+            ->select(
+                'guns.id',
+                'guns.gun_name',
+                'guns.gun_type',
+                'guns.caliber',
+                'companies.company_name',
+            );
+    }
+
+    public function scopeGetAllGunType($query){
+        $query->select('guns.gun_type')->distinct();
+    }
+
+    public function scopefilter_guntype($query){
+        $query->join('companies', 'guns.company', '=', 'companies.id')
+            ->where('gun_type', '=', '步槍')
+            ->orderBy('guns.id')
+            ->select(
+                'guns.id',
+                'guns.gun_name',
+                'guns.gun_type',
+                'guns.caliber',
+                'companies.company_name',
+            );
+    }
 }

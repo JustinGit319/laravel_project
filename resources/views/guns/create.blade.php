@@ -3,7 +3,7 @@
 @section('title', "Guns_Create")
 @section('contents')
 這是建立槍枝的view</br>
-<a style="color: crimson" href="<?php echo route('guns.index');?>">回到所有槍枝的view</a>
+    <a style="color: crimson" href="<?php echo route('guns.index');?>">回到所有槍枝的view</a>
 <hr/>
 {!! Form::open(['url' => 'guns/store']) !!}
     <div class = "form-group">
@@ -19,10 +19,9 @@
         {!! Form::text('caliber', null, [ 'class' => 'form-control']) !!}
     </div>
 
-    {{--    下次記得修改為下拉式表單--}}
     <div class = "form-group">
         {!! Form::Label('company' , '廠商名稱:') !!}
-        {!! Form::text('company', null, [ 'class' => 'form-control']) !!}
+        {{ Form::select('company', $companies) }}
     </div>
     {{Form::submit('新增此槍枝')}}
 {!! Form::close() !!}
