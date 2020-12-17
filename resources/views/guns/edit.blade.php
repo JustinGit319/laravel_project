@@ -3,6 +3,7 @@
 @section('title', "Guns_Edit")
 @section('contents')
 <h1>這是修改一筆槍枝的view</h1>
+@include('message.list')
 {{Form::open(['url'=>'guns/'.$id.'/update', 'method'=>'patch'])}}
 <div class = "form-group">
     {!! Form::Label('gun_name' , '槍枝名稱:') !!}

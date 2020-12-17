@@ -5,6 +5,7 @@
 這是建立槍枝的view</br>
     <a style="color: crimson" href="<?php echo route('guns.index');?>">回到所有槍枝的view</a>
 <hr/>
+@include('message.list')
 {!! Form::open(['url' => 'guns/store']) !!}
     <div class = "form-group">
         {!! Form::Label('gun_name' , '槍枝名稱:') !!}

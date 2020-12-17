@@ -30,4 +30,14 @@ class GunRequest extends FormRequest
             'company' => 'required'
         ];
     }
+
+    public function messages()
+    {
+        return[
+            'gun_name.required' => '槍枝名稱 必填',
+            'gun_type.required' => '槍枝種類 必填',
+            'caliber.required' => '口徑 必填',
+            'company.required' => '公司名稱 必填'
+        ];
+    }
 }

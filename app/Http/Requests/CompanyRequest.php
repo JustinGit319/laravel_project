@@ -28,4 +28,11 @@ class CompanyRequest extends FormRequest
             'country' => 'required'
         ];
     }
+
+    public function messages(){
+        return[
+        'company_name.required' => '公司名稱 必填',
+        'country.required' => '所在國家 必填'
+        ];
+    }
 }

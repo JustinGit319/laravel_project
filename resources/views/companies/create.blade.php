@@ -5,6 +5,7 @@
 這是建立廠商的view </br>
 <a style="color: crimson" href="<?php echo route('companies.index');?>">回到公司的 view</a>
 <hr/>
+@include('message.list')
 {!! Form::open(['url' => 'companies/store']) !!}
     <div class = "form-group">
         {!! Form::Label('company_name' , '廠商名稱:') !!}
