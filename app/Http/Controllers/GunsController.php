@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GunRequest;
 use App\Models\company;
 use App\Models\gun;
 use Illuminate\Http\Request;
@@ -52,7 +53,7 @@ class GunsController extends Controller
         return view('guns.edit', $gun, ['companies'=>$all_company_name]);
     }
 
-    public function store(Request $request)
+    public function store(GunRequest $request)
     {
         $gun = new Gun();
         $gun->gun_name = $request->input('gun_name');
@@ -64,7 +65,7 @@ class GunsController extends Controller
         return redirect('guns');
     }
 
-    public function update($id, Request $request)
+    public function update($id, GunRequest $request)
     {
         Gun::FindOrFail($id)
             ->update(
