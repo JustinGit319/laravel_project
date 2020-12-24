@@ -34,9 +34,9 @@ class GunsController extends Controller
     }
 
     public function show($id){
-        $gun = gun::findOrFail($id)->toArray();
-        $companies = company::all();
-        return view('guns.show',$gun, ['companies'=>$companies]);
+        $gun = Gun::findOrFail($id);
+        $company = Company::findOrFail($gun->company);
+        return view('guns.show', ['gun'=>$gun, 'company_name'=>$company->company_name]);
     }
 
     public function edit($id)
@@ -45,12 +45,13 @@ class GunsController extends Controller
             ->select('id', 'company_name')
             ->orderby('id', 'asc')
             ->get();
-        $all_company_name = [];
+
+        $data = [];
         foreach($companies as $company){
-            $all_company_name[$company->id] = $company->company_name;
+            $data[$company->id] = $company->company_name;
         }
-        $gun = gun::findOrFail($id)->toArray();
-        return view('guns.edit', $gun, ['companies'=>$all_company_name]);
+        $gun = gun::findOrFail($id);
+        return view('guns.edit', $gun, ['gun'=>$gun, 'companies'=>$data]);
     }
 
     public function store(GunRequest $request)

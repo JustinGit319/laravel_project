@@ -15,16 +15,11 @@
         <td>廠牌名稱</td>
     </tr>
     <tr>
-        <td>{{$id}}</td>
-        <td>{{$gun_name}}</td>
-        <td>{{$gun_type}}</td>
-        <td>{{$caliber}}</td>
-        <td>{{$company}}</td>
-        @foreach($companies as $one_company_data)
-            @if($one_company_data->id == $company)
-                <td>{{$one_company_data->company_name}}</td>
-            @endif
-        @endforeach
+        <td>{{$gun->id}}</td>
+        <td>{{$gun->gun_name}}</td>
+        <td>{{$gun->gun_type}}</td>
+        <td>{{$gun->caliber}}</td>
+        <td>{{$company_name}}</td>
     </tr>
 </table>
 {{--<a style="color: crimson" href="<?php echo route('guns.index');?>">回到所有槍枝的view</a>--}}
