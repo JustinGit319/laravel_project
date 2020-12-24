@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class GunsController extends Controller
 {
     public function index(){
-        $guns = Gun::GetAllData()->get();
+        $guns = Gun::all();
         $models = Gun::GetAllGunType()->get();
 
         $data = [];

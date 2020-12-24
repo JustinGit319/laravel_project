@@ -17,16 +17,19 @@ class Gun extends Model
         'updated_at'
     ];
 
-    public function scopeGetAllData($query){
-        $query->join('companies', 'guns.company', '=', 'companies.id')
-            ->orderBy('guns.id')
-            ->select(
-                'guns.id',
-                'guns.gun_name',
-                'guns.gun_type',
-                'guns.caliber',
-                'companies.company_name',
-            );
+//    public function scopeGetAllData($query){
+//        $query->join('companies', 'guns.company', '=', 'companies.id')
+//            ->orderBy('guns.id')
+//            ->select(
+//                'guns.id',
+//                'guns.gun_name',
+//                'guns.gun_type',
+//                'guns.caliber',
+//                'companies.company_name',
+//            );
+//    }
+    public function company(){
+        return $this->belongsTo('App\Models\Company', 'company', 'id');
     }
 
     public function scopeGetAllGunType($query){
@@ -34,15 +37,7 @@ class Gun extends Model
     }
 
     public function scopefilter_guntype($query, $type){
-        $query->join('companies', 'guns.company', '=', 'companies.id')
-            ->where('gun_type', '=', $type)
-            ->orderBy('guns.id')
-            ->select(
-                'guns.id',
-                'guns.gun_name',
-                'guns.gun_type',
-                'guns.caliber',
-                'companies.company_name',
-            );
+        $query->where('gun_type', '=', $type)
+            ->orderBy('guns.id');
     }
 }
