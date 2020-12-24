@@ -5,18 +5,17 @@
 @section('theme', '所有槍枝表單')
 
 @section('contents')
-{{--<h1>這是所有槍枝view</h1>--}}
-<br><a style="color: steelblue" href="<?php echo route('companies.index');?>">轉移至所有廠商資料的view</a>
-<a style="color: crimson" href="<?php echo route('guns.create');?>">新增槍枝</a><br>
-<a style="color: crimson" href="<?php echo route('guns.guntype');?>">查詢步槍</a><br>
 
-{{--{!! Form::open(['url' => 'guns/gun_type']) !!}--}}
-{{--<div class = "form-group">--}}
-{{--    {!! Form::Label('gun_type' , '篩選槍種:') !!}--}}
-{{--    {!! Form::select('gun_type', $guntypes) !!}--}}
-{{--</div>--}}
-{{--{{Form::submit('查詢')}}--}}
-{{--{!! Form::close() !!}--}}
+    <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+{{--        <br><a style="color: steelblue" href="<?php echo route('companies.index');?>">轉移至所有廠商資料的view</a>--}}
+        <a style="color: crimson" href="<?php echo route('guns.create');?>">新增槍枝</a><br>
+        <form action="{{ url('guns/guntype') }}" method='POST'>
+            {!! Form::label('type', '選取槍枝種類：') !!}
+            {!! Form::select('type', $guntypes, ['class' => 'form-control']) !!}
+            <input class="btn btn-default" type="submit" value="查詢" />
+            @csrf
+        </form>
+    </div>
 
 <table class="text-center">
     <tr>

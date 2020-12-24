@@ -23,5 +23,5 @@
     {{Form::submit('確認修改此廠商')}}
     {!! Form::close() !!}
 
-    <a style="color: crimson" href="<?php echo route('companies.index');?>">回到公司的 view</a>
+{{--    <a style="color: crimson" href="<?php echo route('companies.index');?>">回到公司的 view</a>--}}
 @endsection

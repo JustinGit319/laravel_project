@@ -5,7 +5,7 @@
 @section('theme', '單一筆廠商表單')
 
 @section('contents')
-    <a style="color: crimson" href="<?php echo route('companies.index');?>">回到公司的 view</a>
+{{--    <a style="color: crimson" href="<?php echo route('companies.index');?>">回到公司的 view</a>--}}
 {{--    <h1>這是單筆廠商view</h1>--}}
     <table class="text-center">
         <tr>

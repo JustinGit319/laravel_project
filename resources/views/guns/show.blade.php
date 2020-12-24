@@ -27,5 +27,5 @@
         @endforeach
     </tr>
 </table>
-<a style="color: crimson" href="<?php echo route('guns.index');?>">回到所有槍枝的view</a>
+{{--<a style="color: crimson" href="<?php echo route('guns.index');?>">回到所有槍枝的view</a>--}}
 @endsection

@@ -83,9 +83,17 @@ class GunsController extends Controller
         return redirect('guns');
     }
 
-    public function guntype(){
-        $guns = Gun::filter_guntype()->get();
+    public function guntype(Request $request){
 
-        return view('guns.index',['guns'=>$guns]);
+        $guns = Gun::filter_guntype($request->input('type'))->get();
+
+        $models = Gun::GetAllGunType()->get();
+
+        $data = [];
+        foreach($models as $model){
+            $data[$model->gun_type] = $model->gun_type;
+        }
+
+        return view('guns.index',['guns'=>$guns, 'guntypes' => $data]);
     }
 }

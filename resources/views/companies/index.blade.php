@@ -6,8 +6,11 @@
 
 @section('contents')
 {{--    <h1>這是所有廠商資料view</h1>--}}
-    <br><a style="color: steelblue" href="<?php echo route('guns.index');?>">轉移至所有槍枝資料的view</a>
-    <a style="color: crimson" href="<?php echo route('companies.create');?>">新增廠商</a>
+{{--    <br><a style="color: steelblue" href="<?php echo route('guns.index');?>">轉移至所有槍枝資料的view</a>--}}
+    <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+        <a style="color: crimson" href="<?php echo route('companies.create');?>">新增廠商</a>
+    </div>
+
     <table>
         <tr>
             <td style="color: crimson">廠商編號</td>

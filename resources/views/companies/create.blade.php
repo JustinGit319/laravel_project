@@ -5,8 +5,8 @@
 @section('theme', '建立廠商表單')
 
 @section('contents')
-<a style="color: crimson" href="<?php echo route('companies.index');?>">回到公司的 view</a>
-<hr/>
+{{--<a style="color: crimson" href="<?php echo route('companies.index');?>">回到公司的 view</a>--}}
+{{--<hr/>--}}
 @include('message.list')
 {!! Form::open(['url' => 'companies/store']) !!}
     <div class = "form-group">

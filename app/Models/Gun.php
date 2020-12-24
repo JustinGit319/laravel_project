@@ -33,9 +33,9 @@ class Gun extends Model
         $query->select('guns.gun_type')->distinct();
     }
 
-    public function scopefilter_guntype($query){
+    public function scopefilter_guntype($query, $type){
         $query->join('companies', 'guns.company', '=', 'companies.id')
-            ->where('gun_type', '=', '步槍')
+            ->where('gun_type', '=', $type)
             ->orderBy('guns.id')
             ->select(
                 'guns.id',

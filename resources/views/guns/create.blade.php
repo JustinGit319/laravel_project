@@ -5,9 +5,9 @@
 @section('theme', '建立槍枝表單')
 
 @section('contents')
-這是建立槍枝的view</br>
-    <a style="color: crimson" href="<?php echo route('guns.index');?>">回到所有槍枝的view</a>
-<hr/>
+{{--這是建立槍枝的view</br>--}}
+{{--    <a style="color: crimson" href="<?php echo route('guns.index');?>">回到所有槍枝的view</a>--}}
+{{--<hr/>--}}
 @include('message.list')
 {!! Form::open(['url' => 'guns/store']) !!}
     <div class = "form-group">
