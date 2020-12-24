@@ -1,8 +1,11 @@
 @extends('app')
 
 @section('title', "Companies_Edit")
+
+@section('theme', '編輯廠商表單')
+
 @section('contents')
-    <h1>這是修改單筆廠商view </h1>
+{{--    <h1>這是修改單筆廠商view </h1>--}}
     @include('message.list')
     {{Form::open(['url'=>'companies/'.$id.'/update', 'method'=>'patch'])}}
     <div class = "form-group">

@@ -15,4 +15,8 @@ class Company extends Model
         'updated_at'
     ];
 
+    public function guns()
+    {
+        return $this->hasMany('App\Models\Gun', 'company');
+    }
 }

@@ -1,14 +1,17 @@
 @extends('app')
 
 @section('title', "Companies")
+
+@section('theme', '所有廠商表單')
+
 @section('contents')
-    <h1>這是所有廠商資料view</h1>
+{{--    <h1>這是所有廠商資料view</h1>--}}
     <br><a style="color: steelblue" href="<?php echo route('guns.index');?>">轉移至所有槍枝資料的view</a>
     <a style="color: crimson" href="<?php echo route('companies.create');?>">新增廠商</a>
     <table>
         <tr>
-            <td style="color: crimson">公司編號</td>
-            <td style="color: deepskyblue">公司名稱</td>
+            <td style="color: crimson">廠商編號</td>
+            <td style="color: deepskyblue">廠商名稱</td>
             <td style="color: blueviolet">所在地區</td>
             <td style="color: crimson">詳細</td>
             <td style="color: deepskyblue">編輯</td>

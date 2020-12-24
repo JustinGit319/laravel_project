@@ -22,8 +22,9 @@ class CompanyController extends Controller
 
     public function show($id)
     {
-        $company = company::findOrFail($id)->toArray();
-        return view('companies.show', $company);
+        $company = Company::findOrFail($id);
+        $guns = $company->guns;
+        return view('companies.show', ['company'=>$company, 'guns'=>$guns]);
     }
 
     public function edit($id)

@@ -1,8 +1,11 @@
 @extends('app')
 
 @section('title', "Guns")
+
+@section('theme', '所有槍枝表單')
+
 @section('contents')
-<h1>這是所有槍枝view</h1>
+{{--<h1>這是所有槍枝view</h1>--}}
 <br><a style="color: steelblue" href="<?php echo route('companies.index');?>">轉移至所有廠商資料的view</a>
 <a style="color: crimson" href="<?php echo route('guns.create');?>">新增槍枝</a><br>
 <a style="color: crimson" href="<?php echo route('guns.guntype');?>">查詢步槍</a><br>

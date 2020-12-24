@@ -1,8 +1,10 @@
 @extends('app')
 
 @section('title', "Companies_Create")
+
+@section('theme', '建立廠商表單')
+
 @section('contents')
-這是建立廠商的view </br>
 <a style="color: crimson" href="<?php echo route('companies.index');?>">回到公司的 view</a>
 <hr/>
 @include('message.list')
