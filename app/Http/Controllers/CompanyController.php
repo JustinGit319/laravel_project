@@ -60,4 +60,55 @@ class CompanyController extends Controller
 
         return redirect('companies');
     }
+
+    //------- Api
+    public function api_companies()
+    {
+        return Company::all();
+    }
+
+    public function api_update(Request $request)
+    {
+        $company = Company::find($request->input('id'));
+        if ($company == null)
+        {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+
+        $company->company_name = $request->input('company_name');
+        $company->country = $request->input('country');
+
+        if ($company->save())
+        {
+            return response()->json([
+                'status' => 1,
+            ]);
+        } else {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+    }
+
+    public function api_delete(Request $request)
+    {
+        $company = Company::find($request->input('id'));
+
+        if ($company == null)
+        {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+
+        if ($company->delete())
+        {
+            return response()->json([
+                'status' => 1,
+            ]);
+        }
+
+    }
 }

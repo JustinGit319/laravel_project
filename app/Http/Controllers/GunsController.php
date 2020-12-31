@@ -97,4 +97,50 @@ class GunsController extends Controller
 
         return view('guns.index',['guns'=>$guns, 'guntypes' => $data]);
     }
+
+    // Api
+    public function api_guns()
+    {
+        return Gun::all();
+    }
+
+
+    public function api_update(Request $request)
+    {
+        $gun = Gun::find($request->input('id'));
+        if ($gun == null)
+        {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+        $gun->gun_name = $request->input('gun_name');
+        $gun->gun_type = $request->input('gun_type');
+        $gun->caliber = $request->input('caliber');
+        $gun->company = $request->input('company');
+        $gun->gun_name = $request->input('gun_name');
+
+        if ($gun->save())
+        {
+            return response()->json([
+                'status' => 1,
+            ]);
+        } else {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+    }
+
+    public function api_delete(Request $request)
+    {
+        $gun = Gun::find($request->input('id'));
+
+        if ($gun == null)
+        {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+    }
 }
