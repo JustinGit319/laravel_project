@@ -118,7 +118,6 @@ class GunsController extends Controller
         $gun->gun_type = $request->input('gun_type');
         $gun->caliber = $request->input('caliber');
         $gun->company = $request->input('company');
-        $gun->gun_name = $request->input('gun_name');
 
         if ($gun->save())
         {
@@ -140,6 +139,12 @@ class GunsController extends Controller
         {
             return response()->json([
                 'status' => 0,
+            ]);
+        }
+        if ($gun->delete())
+        {
+            return response()->json([
+                'status' => 1,
             ]);
         }
     }

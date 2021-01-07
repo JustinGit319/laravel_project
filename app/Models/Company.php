@@ -19,4 +19,10 @@ class Company extends Model
     {
         return $this->hasMany('App\Models\Gun', 'company');
     }
+
+    public function delete()
+    {
+        $this->guns()->delete();
+        return parent::delete();
+    }
 }

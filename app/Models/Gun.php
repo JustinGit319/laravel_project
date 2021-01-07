@@ -28,7 +28,7 @@ class Gun extends Model
 //                'companies.company_name',
 //            );
 //    }
-    public function company(){
+    public function obj_company(){
         return $this->belongsTo('App\Models\Company', 'company', 'id');
     }
 

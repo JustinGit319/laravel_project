@@ -29,8 +29,8 @@ class CompanyController extends Controller
 
     public function edit($id)
     {
-        $company = company::findOrFail($id)->toArray();
-        return view('companies.edit', $company);
+        $company = company::findOrFail($id);
+        return view('companies.edit', ['company'=>$company]);
     }
 
     public function store(CompanyRequest $request)

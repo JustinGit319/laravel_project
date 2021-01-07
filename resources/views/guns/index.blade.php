@@ -34,7 +34,7 @@
             <td>{{$gun->gun_name}}</td>
             <td>{{$gun->gun_type}}</td>
             <td>{{$gun->caliber}}</td>
-            <td>{{$gun->company_name}}</td>
+            <td>{{$gun->obj_company->company_name}}</td>
             <td><a href="{{route('guns.show', [$id = $gun->id])}}">檢視</a></td>
             <td><a href="{{route('guns.edit', [$id = $gun->id])}}">編輯</a></td>
             <td><a href="{{route('guns.destroy', [$id = $gun->id])}}">刪除</a></td>

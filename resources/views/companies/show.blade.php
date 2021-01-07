@@ -27,7 +27,6 @@
             <td style="color: deepskyblue">槍名</td>
             <td style="color: blueviolet">槍種</td>
             <td style="color: steelblue">口徑</td>
-            <td style="color: steelblue">廠牌名稱</td>
         </tr>
         @foreach($guns as $gun)
             <tr>
