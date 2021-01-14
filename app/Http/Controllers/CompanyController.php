@@ -70,15 +70,31 @@ class CompanyController extends Controller
     public function api_update(Request $request)
     {
         $company = Company::find($request->input('id'));
+        $company->company_name = $request->input('company_name');
+        $company->country = $request->input('country');
+
         if ($company == null)
         {
             return response()->json([
                 'status' => 0,
+                'error' => '沒有此筆資料'
+            ]);
+        }
+        if ($company->company_name == null)
+        {
+            return response()->json([
+                'status' => -1,
+                'error' => 'Company_name 不能為空值'
+            ]);
+        }
+        if ($company->country == null)
+        {
+            return response()->json([
+                'status' => -2,
+                'error' => 'Country 不能為空值'
             ]);
         }
 
-        $company->company_name = $request->input('company_name');
-        $company->country = $request->input('country');
 
         if ($company->save())
         {
@@ -87,7 +103,8 @@ class CompanyController extends Controller
             ]);
         } else {
             return response()->json([
-                'status' => 0,
+                'status' => -3,
+                'error' => '儲存失敗'
             ]);
         }
     }
@@ -100,6 +117,7 @@ class CompanyController extends Controller
         {
             return response()->json([
                 'status' => 0,
+                'error' => '沒有此筆資料可刪除'
             ]);
         }
 

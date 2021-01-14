@@ -40,4 +40,5 @@ class Gun extends Model
         $query->where('gun_type', '=', $type)
             ->orderBy('guns.id');
     }
+
 }

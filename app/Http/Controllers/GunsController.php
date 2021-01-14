@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\DB;
 class GunsController extends Controller
 {
     public function index(){
-        $guns = Gun::all();
+        $guns = Gun::orderBy('id', 'ASC')->get();
+//        $guns = $guns;
         $models = Gun::GetAllGunType()->get();
 
         $data = [];
@@ -22,9 +23,10 @@ class GunsController extends Controller
     }
 
     public function creat(){
-        $companies = DB::table('companies')
-            ->select('id', 'company_name')
-            ->orderBy('id', 'asc')->get();
+//        $companies = DB::table('companies')
+//            ->select('id', 'company_name')
+//            ->orderBy('id', 'asc')->get();
+        $companies = Company::GetCompany()->get();
 
         $all_company_name = [];
         foreach ($companies as $company){
@@ -41,10 +43,11 @@ class GunsController extends Controller
 
     public function edit($id)
     {
-        $companies = DB::table('companies')
-            ->select('id', 'company_name')
-            ->orderby('id', 'asc')
-            ->get();
+//        $companies = DB::table('companies')
+//            ->select('id', 'company_name')
+//            ->orderby('id', 'asc')
+//            ->get();
+        $companies = Company::GetCompany()->get();
 
         $data = [];
         foreach($companies as $company){
@@ -68,13 +71,12 @@ class GunsController extends Controller
 
     public function update($id, GunRequest $request)
     {
-        Gun::FindOrFail($id)
-            ->update(
-                ['gun_name' => $request->input('gun_name')],
-                ['gun_type' => $request->input('gun_type')],
-                ['caliber' => $request->input('caliber')],
-                ['company' => $request->input('company')],
-            );
+        $gun = Gun::FindOrFail($id);
+        $gun->gun_name = $request->input('gun_name');
+        $gun->gun_type = $request->input('gun_type');
+        $gun->caliber = $request->input('caliber');
+        $gun->company = $request->input('company');
+        $gun->save();
         return redirect('guns');
     }
 
@@ -101,24 +103,58 @@ class GunsController extends Controller
     // Api
     public function api_guns()
     {
-        return Gun::all();
+        return Gun::orderBy('id', 'ASC')->get();
     }
 
 
     public function api_update(Request $request)
     {
         $gun = Gun::find($request->input('id'));
+        $gun_name = $request->input('gun_name');
+        $gun_type = $request->input('gun_type');
+        $caliber = $request->input('caliber');
+        $company = $request->input('cid');
+
         if ($gun == null)
         {
             return response()->json([
                 'status' => 0,
+                'error' => '沒有此筆資料可更新'
+            ]);
+        }
+
+        if ($gun_name == null)
+        {
+            return response()->json([
+                'status' => -1,
+                'error' => 'gun_name 不能為空值'
+            ]);
+        }
+        if ($gun_type == null)
+        {
+            return response()->json([
+                'status' => -2,
+                'error' => 'gun_type 不能為空值'
+            ]);
+        }
+        if ($caliber == null)
+        {
+            return response()->json([
+                'status' => -3,
+                'error' => 'caliber 不能為空值'
+            ]);
+        }
+        if ($company == null)
+        {
+            return response()->json([
+                'status' => -4,
+                'error' => 'company 不能為空值'
             ]);
         }
         $gun->gun_name = $request->input('gun_name');
         $gun->gun_type = $request->input('gun_type');
         $gun->caliber = $request->input('caliber');
-        $gun->company = $request->input('company');
-
+        $gun->company = $request->input('cid');
         if ($gun->save())
         {
             return response()->json([
@@ -127,6 +163,7 @@ class GunsController extends Controller
         } else {
             return response()->json([
                 'status' => 0,
+                'error' => '更新失敗'
             ]);
         }
     }
@@ -139,6 +176,7 @@ class GunsController extends Controller
         {
             return response()->json([
                 'status' => 0,
+                'error' => '沒有此筆資料可刪除'
             ]);
         }
         if ($gun->delete())

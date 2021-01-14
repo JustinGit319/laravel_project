@@ -68,7 +68,7 @@ class AuthController extends Controller
                     'status' => 0,
                     'error' => [
                         'code' => 1,
-                        'message' => 'These credentials do not match our records.',
+                        'message' => '帳號或密碼錯誤',
                     ],
                 ]);
         }

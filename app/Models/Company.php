@@ -25,4 +25,9 @@ class Company extends Model
         $this->guns()->delete();
         return parent::delete();
     }
+
+    public function scopeGetCompany($query){
+        $query->select('id', 'company_name')
+            ->orderBy('id', 'asc');
+    }
 }
